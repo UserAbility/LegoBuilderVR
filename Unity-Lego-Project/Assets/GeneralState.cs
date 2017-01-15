@@ -80,4 +80,8 @@ public class GeneralState : MonoBehaviour {
 
         Debug.Log(legoShape);
     }
+
+    public bool droppedBrick = false;
+
+    public bool changeShape = false;
 }

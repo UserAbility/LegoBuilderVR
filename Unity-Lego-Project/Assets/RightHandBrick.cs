@@ -19,12 +19,15 @@ public class RightHandBrick : MonoBehaviour {
         currentBrick.transform.localPosition = new Vector3(0, 0, 0.1f);
         currentBrick.AddComponent<Rigidbody>();
         currentBrick.AddComponent<FixedJoint>();
+        currentBrick.tag = "CurrentBrick";
 
         Rigidbody rb = currentBrick.GetComponent<Rigidbody>();
         Rigidbody controllerRigidbody = rightController.GetComponent<Rigidbody>();
         FixedJoint fj = currentBrick.GetComponent<FixedJoint>();
         fj.connectedBody = controllerRigidbody;
-        rb.useGravity = false;
+        rb.useGravity = true;
+        rb.isKinematic = false;
+        
         Debug.Log(rb.useGravity);
 
         currentBrickString = "brick-1x1x1";
@@ -33,8 +36,7 @@ public class RightHandBrick : MonoBehaviour {
 
     // Update is called once per frame
     void FixedUpdate () {
-        // Debug.Log(state.legoShape);
-		if (currentBrickString != state.legoShape) {
+		if (currentBrickString != state.legoShape && state.changeShape) {
             Debug.Log("Change!" + currentBrickString + " " + state.legoShape);
             string path = "Prefabs/" + state.legoShape;
             GameObject newBrick = Instantiate(Resources.Load(path, typeof(GameObject))) as GameObject;
@@ -47,16 +49,26 @@ public class RightHandBrick : MonoBehaviour {
             newBrick.AddComponent<Rigidbody>();
             newBrick.AddComponent<FixedJoint>();
 
+
             Rigidbody rb = newBrick.GetComponent<Rigidbody>();
             Rigidbody controllerRigidbody = rightController.GetComponent<Rigidbody>();
             FixedJoint fj = newBrick.GetComponent<FixedJoint>();
 
             fj.connectedBody = controllerRigidbody;
-            rb.useGravity = false;
-
-            Destroy(currentBrick);
+            rb.useGravity = true;
+            rb.isKinematic = false;
+            currentBrick.gameObject.tag = "OldCurrentBrick";
+            
             currentBrick = newBrick;
+            currentBrick.gameObject.tag = "CurrentBrick";
             currentBrickString = state.legoShape;
+
+            state.droppedBrick = false;
+            state.changeShape = false;
         }
 	}
+
+    public GameObject GetCurrentBrick () {
+        return currentBrick;
+    }
 }

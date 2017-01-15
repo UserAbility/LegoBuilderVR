@@ -15,6 +15,9 @@ TagManager:
   - GeneralState
   - LeftController
   - RightController
+  - RightHandBrick
+  - OldCurrentBrick
+  - CurrentBrick
   layers:
   - Default
   - TransparentFX

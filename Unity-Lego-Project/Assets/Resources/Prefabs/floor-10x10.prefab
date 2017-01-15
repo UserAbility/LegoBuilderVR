@@ -416,7 +416,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4804611490398074}
   - component: {fileID: 33974500568150714}
-  - component: {fileID: 136015462655484656}
   - component: {fileID: 23168174964310720}
   m_Layer: 0
   m_Name: snapper
@@ -7140,19 +7139,6 @@ CapsuleCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1179801085338242}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136015462655484656
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1229321464323690}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
