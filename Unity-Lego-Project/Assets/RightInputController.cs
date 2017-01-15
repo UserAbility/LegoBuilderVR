@@ -25,7 +25,15 @@ public class RightInputController : MonoBehaviour {
 
         if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger)) {
             Debug.Log("Right is working");
+
+            GameObject rightHandBrick = GameObject.FindGameObjectWithTag("CurrentBrick");
+
+            FixedJoint fj = rightHandBrick.GetComponent<FixedJoint>();
+            Rigidbody rb = rightHandBrick.GetComponent<Rigidbody>();
             
+            rb.useGravity = true;
+            fj.breakForce = 0;
+            state.droppedBrick = true;
 
         }
 
@@ -35,11 +43,14 @@ public class RightInputController : MonoBehaviour {
             float y = device.GetAxis(Valve.VR.EVRButtonId.k_EButton_Axis0).y;
 
             if (x > 0) {
+                state.changeShape = true;
                 state.incrementLegoShape();
             }
 
             if (x <= 0) {
+                state.changeShape = true;
                 state.decrementLegoShape();
+                
             }
         }
     }
