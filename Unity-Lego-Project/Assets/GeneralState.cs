@@ -84,4 +84,5 @@ public class GeneralState : MonoBehaviour {
     public bool droppedBrick = false;
 
     public bool changeShape = false;
+    public bool shapeChangeReal = false;
 }

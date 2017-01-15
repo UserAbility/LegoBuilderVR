@@ -33,7 +33,8 @@ public class RightInputController : MonoBehaviour {
             
             rb.useGravity = true;
             fj.breakForce = 0;
-            state.droppedBrick = true;
+            rightHandBrick.gameObject.tag = "OldCurrentBrick";
+            //state.changeShape = true;
 
         }
 
@@ -44,11 +45,13 @@ public class RightInputController : MonoBehaviour {
 
             if (x > 0) {
                 state.changeShape = true;
+                state.shapeChangeReal = true;
                 state.incrementLegoShape();
             }
 
             if (x <= 0) {
                 state.changeShape = true;
+                state.shapeChangeReal = true;
                 state.decrementLegoShape();
                 
             }
