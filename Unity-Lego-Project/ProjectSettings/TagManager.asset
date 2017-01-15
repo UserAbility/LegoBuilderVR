@@ -13,6 +13,8 @@ TagManager:
   - Arm
   - Leg
   - GeneralState
+  - LeftController
+  - RightController
   layers:
   - Default
   - TransparentFX
