@@ -36,7 +36,7 @@ public class RightHandBrick : MonoBehaviour {
 
     // Update is called once per frame
     void FixedUpdate () {
-		if (currentBrickString != state.legoShape && state.changeShape) {
+		if (currentBrickString != state.legoShape || state.changeShape) {
             Debug.Log("Change!" + currentBrickString + " " + state.legoShape);
             string path = "Prefabs/" + state.legoShape;
             GameObject newBrick = Instantiate(Resources.Load(path, typeof(GameObject))) as GameObject;
@@ -58,7 +58,11 @@ public class RightHandBrick : MonoBehaviour {
             rb.useGravity = true;
             rb.isKinematic = false;
             currentBrick.gameObject.tag = "OldCurrentBrick";
-            
+
+            if (state.shapeChangeReal) {
+               Destroy(currentBrick);
+            }
+
             currentBrick = newBrick;
             currentBrick.gameObject.tag = "CurrentBrick";
             currentBrickString = state.legoShape;
