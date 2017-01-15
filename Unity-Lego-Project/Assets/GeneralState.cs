@@ -23,24 +23,14 @@ public class GeneralState : MonoBehaviour {
     }
 
     public string legoColor = "blue";
-    public string legoShape = "1x1";
-
-    //private string[] legoShapes = [
-        //"1x1",
-        //"1x2",
-        //"1x3",
-        //"1x4",
-        //"2x2"
-    //];
-
-    //string[] legoShapes = new string[4];
+    public string legoShape = "brick-1x1x1";
 
     string[] legoShapes = {
-           "1x1",
-        "1x2",
-        "1x3",
-        "1x4",
-        "2x2"
+        "brick-1x1x1",
+        "brick-1x1x2",
+        "brick-1x1x4",
+        "brick-1x2x2",
+        "brick-1x2x4"
         };
 
     public void setLegoColor(int newNum) {
@@ -70,10 +60,6 @@ public class GeneralState : MonoBehaviour {
             legoShape = legoShapes[0];
         }
         Debug.Log(legoShape);
-        
-
-        //if (currentLegoIndex < legoShapes.Length - 1) {
-        //}
     }
 
     public void decrementLegoShape() {
