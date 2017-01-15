@@ -12,6 +12,7 @@ TagManager:
   - Torso
   - Arm
   - Leg
+  - GeneralState
   layers:
   - Default
   - TransparentFX
