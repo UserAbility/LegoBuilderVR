@@ -8,24 +8,12 @@ public class LeftControllerInputs : MonoBehaviour {
     private SteamVR_TrackedObject trackedObj;
     private SteamVR_Controller.Device device;
 
-    private GameObject generalState;
-
-    private void OnEnable() {
-       // _controller = GetComponent<SteamVR_TrackedController>();
-
-        // _controller.OnTriggerClicked = this.handleTriggerClicked;
-    }
-
-    private void OnDisable() {
-
-    }
-
+    private GeneralState state;
     // Use this for initialization
     void Awake () {
-        Debug.Log("YOYOYOYOYOYOYOY");
-        trackedObj = GetComponent<SteamVR_TrackedObject>();
 
-       
+        trackedObj = GetComponent<SteamVR_TrackedObject>();
+        state = GeneralState.Instance;
     }
 
     // Update is called once per frame
@@ -33,10 +21,11 @@ public class LeftControllerInputs : MonoBehaviour {
         device = SteamVR_Controller.Input((int)trackedObj.index);
 
         if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger)) {
+            Debug.Log(state.myNum);
             // Debug.Log(GeneralState.Instance.myNum);
-            int oldNum = GeneralState.Instance.myNum;
-            GeneralState.Instance.setMyNum(++oldNum);
-            Debug.Log(GeneralState.Instance.myNum);
+            //int oldNum = GeneralState.Instance.myNum;
+            //GeneralState.Instance.setMyNum(++oldNum);
+            //Debug.Log(GeneralState.Instance.myNum);
             this.fartSomething();
         }
 

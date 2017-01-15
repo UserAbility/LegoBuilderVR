@@ -25,11 +25,73 @@ public class GeneralState : MonoBehaviour {
     public string legoColor = "blue";
     public string legoShape = "1x1";
 
+    //private string[] legoShapes = [
+        //"1x1",
+        //"1x2",
+        //"1x3",
+        //"1x4",
+        //"2x2"
+    //];
+
+    //string[] legoShapes = new string[4];
+
+    string[] legoShapes = {
+           "1x1",
+        "1x2",
+        "1x3",
+        "1x4",
+        "2x2"
+        };
+
     public void setLegoColor(int newNum) {
         myNum = newNum;
     }
 
     public void setLegoShape(string newLegoShape) {
         legoShape = newLegoShape;
+    }
+
+    public void incrementLegoShape() {
+        int currentLegoIndex = 0;
+        for (int i = 0; i < legoShapes.Length; i++) {
+            if (legoShape == legoShapes[i]) {
+                currentLegoIndex = i;
+            }
+        }
+        Debug.Log(currentLegoIndex);
+        Debug.Log("currentLego Index " + currentLegoIndex);
+        Debug.Log("legoShapes.Length " + legoShapes.Length);
+        if (currentLegoIndex < legoShapes.Length - 1) {
+            legoShape = legoShapes[currentLegoIndex + 1];
+        }
+
+        else if (currentLegoIndex < legoShapes.Length) {
+            Debug.Log("in other....");
+            legoShape = legoShapes[0];
+        }
+        Debug.Log(legoShape);
+        
+
+        //if (currentLegoIndex < legoShapes.Length - 1) {
+        //}
+    }
+
+    public void decrementLegoShape() {
+        int currentLegoIndex = 0;
+        for (int i = 0; i < legoShapes.Length; i++) {
+            if (legoShape == legoShapes[i]) {
+                currentLegoIndex = i;
+            }
+        }
+
+        if (currentLegoIndex > 0) {
+            legoShape = legoShapes[currentLegoIndex - 1];
+        }
+
+        if (currentLegoIndex == 0) {
+            legoShape = legoShapes[legoShapes.Length - 1];
+        }
+
+        Debug.Log(legoShape);
     }
 }
